@@ -10,15 +10,17 @@ LOAD_DELAY = 2
 with open('data.pickle', 'rb') as file:
     rx_list = pickle.load(file)
 
-rx_list = rx_list[1220:]
+rx_list = rx_list[2550:]
 
-# Setup
+
+# Setup209370
 time.sleep(BASE_DELAY*2)
 click(187, 1058)
 time.sleep(BASE_DELAY*2)
 click(80, 179)
 
 for num in rx_list:
+    click(80, 179)
     time.sleep(0.5)
     write(str(num))
 
@@ -70,6 +72,9 @@ for num in rx_list:
         count += 1
         time.sleep(0.5)
 
+    if has_error():
+        keyboard.press_and_release('esc')
+
     click(1903, 151)
 
     counter = 0
@@ -78,3 +83,4 @@ for num in rx_list:
             break
         counter += 1
         time.sleep(0.1)
+    time.sleep(0.2)

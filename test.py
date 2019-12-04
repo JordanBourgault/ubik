@@ -4,4 +4,4 @@ import keyboard
 import PIL.ImageGrab
 
 get_pos(4)
-print(is_closed())
+# print(is_closed())

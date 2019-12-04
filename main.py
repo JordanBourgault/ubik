@@ -61,7 +61,7 @@ def is_pdf():
 
 
 def has_search_res():
-    image = PIL.ImageGrab.grab(bbox=(862, 195, 864, 197)).histogram()
+    image = PIL.ImageGrab.grab(bbox=(1091, 195, 1093, 197)).histogram()
     return SEARCH_REF_IMAGE == image
 
 
