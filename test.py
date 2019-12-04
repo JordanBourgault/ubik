@@ -1,4 +1,4 @@
-from main import get_pos, has_error, has_note
+from main import get_pos, has_error, has_note, is_pdf
 import time
 import keyboard
 import PIL.ImageGrab
@@ -11,3 +11,4 @@ get_pos(4)
 #
 # time.sleep(3)
 # has_note()
+is_pdf()

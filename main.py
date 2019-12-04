@@ -9,6 +9,7 @@ from PIL import Image
 NOTE_REF_IMAGE = Image.open('note.png').histogram()
 ERR_REF_IMAGE = Image.open('error.png').histogram()
 GRAY_REF_IMAGE = Image.open('gray.png').histogram()
+PDF_REF_IMAGE = Image.open('pdf_ref.png').histogram()
 
 
 def click(x, y):
@@ -49,3 +50,8 @@ def has_error():
     if GRAY_REF_IMAGE == image:
         return False
     return ERR_REF_IMAGE != image
+
+
+def is_pdf():
+    image = PIL.ImageGrab.grab(bbox=(836, 985, 896, 1032)).histogram()
+    return PDF_REF_IMAGE == image

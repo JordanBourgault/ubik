@@ -1,12 +1,16 @@
-from main import click, write, has_note, get_rx_list, has_error
+from main import click, write, has_note, get_rx_list, has_error, is_pdf
 import time
 from PIL import ImageGrab
 import keyboard
+import pickle
 
 BASE_DELAY = 1
 LOAD_DELAY = 2
 
-rx_list = get_rx_list()[870:]
+with open('data.pickle', 'rb') as file:
+    rx_list = pickle.load(file)
+
+rx_list = rx_list[1010:]
 
 # Setup
 time.sleep(BASE_DELAY*2)
@@ -31,10 +35,18 @@ for num in rx_list:
         click(977, 187)
         time.sleep(BASE_DELAY*2)
         click(1562, 328)
-        time.sleep(8)
-        im = ImageGrab.grab(bbox=(593, 27, 1322, 969))
-        im.save(f'Z:\\recettes\\{str(num)}.png')
-        click(1894, 8)
-        time.sleep(BASE_DELAY*2)
+        time.sleep(3)
+        counter = 0
+        while counter < 15:
+            if is_pdf():
+                im = ImageGrab.grab(bbox=(593, 27, 1322, 969))
+                im.save(f'Z:\\recettes\\{str(num)}.png')
+                click(1894, 8)
+                time.sleep(BASE_DELAY * 2)
+                break
+            else:
+                counter += 1
+                time.sleep(1)
+
     click(1903, 151)
     time.sleep(LOAD_DELAY*2)
