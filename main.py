@@ -10,6 +10,9 @@ NOTE_REF_IMAGE = Image.open('note.png').histogram()
 ERR_REF_IMAGE = Image.open('error.png').histogram()
 GRAY_REF_IMAGE = Image.open('gray.png').histogram()
 PDF_REF_IMAGE = Image.open('pdf_ref.png').histogram()
+SEARCH_REF_IMAGE = Image.open('search_ref.png').histogram()
+PRINT_REF_IMAGE = Image.open('print.png').histogram()
+CLOSED_REF_IMAGE = Image.open('closed.png').histogram()
 
 
 def click(x, y):
@@ -55,3 +58,18 @@ def has_error():
 def is_pdf():
     image = PIL.ImageGrab.grab(bbox=(836, 985, 896, 1032)).histogram()
     return PDF_REF_IMAGE == image
+
+
+def has_search_res():
+    image = PIL.ImageGrab.grab(bbox=(862, 195, 864, 197)).histogram()
+    return SEARCH_REF_IMAGE == image
+
+
+def has_pdf():
+    image = PIL.ImageGrab.grab(bbox=(1559, 312, 1592, 339)).histogram()
+    return PRINT_REF_IMAGE == image
+
+
+def is_closed():
+    image = PIL.ImageGrab.grab(bbox=(1667, 141, 1707, 163)).histogram()
+    return CLOSED_REF_IMAGE == image
