@@ -7,13 +7,13 @@ import pickle
 BASE_DELAY = 1
 LOAD_DELAY = 2
 
-with open('data.pickle', 'rb') as file:
+with open('new_data.pickle', 'rb') as file:
     rx_list = pickle.load(file)
 
-rx_list = rx_list[2550:]
+rx_list = rx_list[:5]
 
 
-# Setup209370
+# Setup
 time.sleep(BASE_DELAY*2)
 click(187, 1058)
 time.sleep(BASE_DELAY*2)
@@ -59,8 +59,9 @@ for num in rx_list:
             counter = 0
             while counter <= 10:
                 if is_pdf():
+                    time.sleep(0.1)
                     im = ImageGrab.grab(bbox=(593, 27, 1322, 969))
-                    im.save(f'Z:\\recettes\\{str(num)}.png')
+                    im.save(f'C:\\Users\\UBIK\\Desktop\\nouvelles_recettes\\{str(num)}.png')
                     time.sleep(0.1)
                     click(1894, 8)
                     time.sleep(BASE_DELAY * 2)

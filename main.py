@@ -4,7 +4,7 @@ import time
 import keyboard
 import PIL.ImageGrab
 from PIL import Image
-
+import pickle
 
 NOTE_REF_IMAGE = Image.open('note.png').histogram()
 ERR_REF_IMAGE = Image.open('error.png').histogram()
@@ -34,7 +34,7 @@ def get_pos(t):
 
 def get_rx_list():
     rx_number_list = []
-    with open('ord_2019_v2.csv', newline='\r\n') as file:
+    with open('list_mag.csv', newline='\r\n') as file:
         for line in file:
             rx_number = line.split(';')[0].split('\n')[0][1:]
             rx_number_list.append(rx_number)
@@ -73,3 +73,9 @@ def has_pdf():
 def is_closed():
     image = PIL.ImageGrab.grab(bbox=(1667, 141, 1707, 163)).histogram()
     return CLOSED_REF_IMAGE == image
+
+
+list = get_rx_list()
+print(list)
+with open('new_data.pickle', 'wb') as file:
+    pickle.dump(list, file)
